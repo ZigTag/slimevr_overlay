@@ -1,4 +1,7 @@
 mod bone;
+mod client;
+mod codec;
+mod data;
 
 use std::f32::consts::PI;
 use std::sync::atomic::Ordering;
