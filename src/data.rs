@@ -8,8 +8,8 @@ use ouroboros::self_referencing;
 pub enum DecodeError {
     #[error("Flatbuffer failed verification")]
     FbVerification(#[from] InvalidFlatbuffer),
-    #[error("Io error: {0}")]
-    Io(#[from] std::io::Error),
+    // #[error("Io error: {0}")]
+    // Io(#[from] std::io::Error),
 }
 
 /// Root flatbuffer type, after verification
@@ -25,3 +25,5 @@ impl Data {
         Self::try_new(data, |v| flatbuffers::root::<OutboundPacket>(v)).map_err(|e| e.into())
     }
 }
+
+pub type DataResult = Result<Data, DecodeError>;

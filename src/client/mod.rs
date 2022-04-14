@@ -1,3 +1,5 @@
+mod state_machine;
+
 use crate::data::Data;
 
 use eyre::eyre;
@@ -66,6 +68,10 @@ impl Client {
         mut data_send: sync::mpsc::Sender<Data>,
     ) -> Result<(), DisconnectReason> {
         let (mut sink, mut stream): (SplitSink<Wss, Message>, SplitStream<Wss>) = socket.split();
+        // Do initial handshake
+        {
+            //TODO
+        }
         loop {
             tokio::select! {
                 _ = &mut stop_signal => {
@@ -97,6 +103,7 @@ impl Client {
     }
 
     fn on_disconnect(err: DisconnectReason) {
+        // TODO: Actually handle this
         log::error!("{}", err);
     }
 

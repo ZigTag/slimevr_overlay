@@ -21,3 +21,4 @@ slimevr_protocol = { git = "https://github.com/SlimeVR/SlimeVR_protocol" }
 ouroboros = "0.15"
 thiserror = "1"
 futures-util = "0.3"
+either = "1"
